@@ -1,0 +1,19 @@
+[Unit]
+# Auto-generated, DO NOT EDIT
+Description=Service for snap application prometheus.prometheus
+Requires=snap-prometheus-86.mount
+Wants=network.target
+After=snap-prometheus-86.mount network.target snapd.apparmor.service
+X-Snappy=yes
+
+[Service]
+EnvironmentFile=-/etc/environment
+ExecStart=/usr/bin/snap run prometheus
+SyslogIdentifier=prometheus.prometheus
+Restart=on-failure
+WorkingDirectory=/var/snap/prometheus/86
+TimeoutStopSec=900
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

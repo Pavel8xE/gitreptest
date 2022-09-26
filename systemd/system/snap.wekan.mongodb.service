@@ -1,0 +1,19 @@
+[Unit]
+# Auto-generated, DO NOT EDIT
+Description=Service for snap application wekan.mongodb
+Requires=snap-wekan-1998.mount
+Wants=network.target
+After=snap-wekan-1998.mount network.target snapd.apparmor.service
+X-Snappy=yes
+
+[Service]
+EnvironmentFile=-/etc/environment
+ExecStart=/usr/bin/snap run wekan.mongodb
+SyslogIdentifier=wekan.mongodb
+Restart=on-failure
+WorkingDirectory=/var/snap/wekan/1998
+TimeoutStopSec=30
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

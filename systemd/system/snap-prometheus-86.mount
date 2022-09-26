@@ -1,0 +1,14 @@
+[Unit]
+Description=Mount unit for prometheus, revision 86
+Before=snapd.service
+After=zfs-mount.service
+
+[Mount]
+What=/var/lib/snapd/snaps/prometheus_86.snap
+Where=/snap/prometheus/86
+Type=squashfs
+Options=nodev,ro,x-gdu.hide,x-gvfs-hide
+LazyUnmount=yes
+
+[Install]
+WantedBy=multi-user.target

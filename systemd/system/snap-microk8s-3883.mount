@@ -1,0 +1,14 @@
+[Unit]
+Description=Mount unit for microk8s, revision 3883
+Before=snapd.service
+After=zfs-mount.service
+
+[Mount]
+What=/var/lib/snapd/snaps/microk8s_3883.snap
+Where=/snap/microk8s/3883
+Type=squashfs
+Options=nodev,ro,x-gdu.hide,x-gvfs-hide
+LazyUnmount=yes
+
+[Install]
+WantedBy=multi-user.target

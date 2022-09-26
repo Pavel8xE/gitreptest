@@ -1,0 +1,19 @@
+[Unit]
+# Auto-generated, DO NOT EDIT
+Description=Service for snap application microk8s.daemon-apiserver-proxy
+Requires=snap-microk8s-3883.mount
+Wants=network.target
+After=snap-microk8s-3883.mount network.target snapd.apparmor.service
+X-Snappy=yes
+
+[Service]
+EnvironmentFile=-/etc/environment
+ExecStart=/usr/bin/snap run microk8s.daemon-apiserver-proxy
+SyslogIdentifier=microk8s.daemon-apiserver-proxy
+Restart=on-failure
+WorkingDirectory=/var/snap/microk8s/3883
+TimeoutStopSec=30
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
